@@ -10,7 +10,12 @@ config_version=5
 
 [application]
 
+<<<<<<< Updated upstream
 config/name="Game Jam ESIEA 2026"
+=======
+config/name="Remanence"
+run/main_scene="uid://dtd78osncm646"
+>>>>>>> Stashed changes
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
