@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dtd78osncm646"]
 
 [ext_resource type="Texture2D" uid="uid://cjfgwbfnmrj75" path="res://assets/Images/6bc92945363467c12fbbd34c7e8e3830.jpg" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bs7ml2v0seye2" path="res://testcam.gd" id="1_trceg"]
 [ext_resource type="PackedScene" uid="uid://bkgl48asplw1q" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/desk_large.gltf" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://68g8k6v0emjj" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/chair_desk_B.gltf" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d2bq4gt5f360x" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/lamp_desk.gltf" id="4_jyhfs"]
@@ -13,16 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://b10fsjrsiqog4" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/cactus_small_B.gltf" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://c3owwuti6h3co" path="res://assets/Digital clock.glb" id="12_eb6dy"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_jyhfs"]
-sky_material = SubResource("ProceduralSkyMaterial_sugp2")
+[sub_resource type="Sky" id="Sky_trceg"]
+sky_material = SubResource("ProceduralSkyMaterial_eb6dy")
 
-[sub_resource type="Environment" id="Environment_tbgi4"]
+[sub_resource type="Environment" id="Environment_a8y0u"]
 background_mode = 2
-sky = SubResource("Sky_jyhfs")
+sky = SubResource("Sky_trceg")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -34,12 +35,16 @@ uv1_scale = Vector3(40, 40, 40)
 
 [node name="Node3D" type="Node3D" unique_id=183920352]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1144401263]
-environment = SubResource("Environment_tbgi4")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1001986463]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=132108296]
+environment = SubResource("Environment_a8y0u")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2086084444]
 transform = Transform3D(1, 0, 0, 0, 0.95371693, 0.3007058, 0, -0.3007058, 0.95371693, 0, 1.91, 0.7)
 fov = 65.0
+script = ExtResource("1_trceg")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=504887787]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0)
@@ -58,6 +63,7 @@ transform = Transform3D(0.5591929, 0, -0.82903755, 0, 1, 0, 0.82903755, 0, 0.559
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Objects/lamp_desk2" unique_id=2078707700]
 transform = Transform3D(-0.9207849, -0.3731856, 0.11352527, -0.22434025, 0.744731, 0.6285278, -0.3191033, 0.5532706, -0.7694577, -0.022727787, 0.8829199, 0.43642575)
+visible = false
 light_color = Color(1, 0.95686275, 0.8980392, 1)
 light_energy = 1.5
 
@@ -82,5 +88,5 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.4635916, 1, -0.43357
 [node name="Monitor" parent="Objects" unique_id=161854045 instance=ExtResource("11_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5472745)
 
-[node name="Digital clock" parent="." unique_id=1987159873 instance=ExtResource("12_eb6dy")]
+[node name="Digital clock" parent="Objects" unique_id=1987159873 instance=ExtResource("12_eb6dy")]
 transform = Transform3D(0.017802566, 0, 0.024146814, 0, 0.03, 0, -0.024146814, 0, 0.017802566, -0.88763064, 1, 0.39035106)

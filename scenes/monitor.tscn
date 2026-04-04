@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ch4r8e0ku7ci4" path="res://assets/Fonts/PlaywriteIE-VariableFont_wght.ttf" id="2_3jcr0"]
 [ext_resource type="Script" uid="uid://d3ma3mxxjno8o" path="res://title_effect.gd" id="3_712wi"]
 [ext_resource type="FontFile" uid="uid://06haja5g2ogp" path="res://assets/Fonts/Montserrat-VariableFont_wght.ttf" id="4_r76x4"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="5_spe5c"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gnqr3"]
 
@@ -13,6 +14,14 @@ viewport_path = NodePath("Monitor/MeshInstance3D/SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jcr0"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_gnqr3")
+emission_enabled = true
+emission = Color(0, 0.2, 1, 1)
+emission_energy_multiplier = 0.05
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bvax4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdfrg"]
+albedo_texture = ExtResource("5_spe5c")
 
 [node name="Monitor" type="Node3D" unique_id=161854045]
 
@@ -67,3 +76,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 100
 text = "Meilleur score : 0%"
+
+[node name="img" type="MeshInstance3D" parent="Monitor" unique_id=815331994]
+transform = Transform3D(0.66, 0, 0, 0, 0.08803965, -0.37521175, 0, 0.49929756, 0.06615998, 0, 0.656, 0.131)
+visible = false
+mesh = SubResource("PlaneMesh_bvax4")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdfrg")
