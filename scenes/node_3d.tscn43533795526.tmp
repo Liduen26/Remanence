@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bi1agcg06wd5m"]
+
+[ext_resource type="Script" uid="uid://b5fq4vad6bnrs" path="res://scripts/RayCastController.gd" id="1_ns6u7"]
+[ext_resource type="Script" uid="uid://txjcrkw8uxxp" path="res://scripts/DrawingCanvas.gd" id="1_tyffc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ns6u7"]
+
+[node name="Node3D" type="Node3D" unique_id=814149954]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1312021502]
+transform = Transform3D(0.95149773, -0.2664376, 0.15382774, 2.7805946e-08, 0.49999994, 0.86602545, -0.30765563, -0.8240213, 0.47574884, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=216253186]
+transform = Transform3D(0.97136647, 0.06961272, -0.22715937, 0.0018059792, 0.95392156, 0.30005077, 0.23757948, -0.29186955, 0.92648166, -0.6409771, 0.5840262, 1.656985)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=2146012657 node_paths=PackedStringArray("drawing_canvas")]
+transform = Transform3D(0.9657739, -0.25464672, -0.04935502, -0.07949102, -0.10944168, -0.9908099, 0.24690491, 0.96082175, -0.12593798, 0, 0, 0)
+target_position = Vector3(0, -3, 0)
+script = ExtResource("1_ns6u7")
+drawing_canvas = NodePath("../../DrawingCanvas")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1176218156]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ns6u7")
+metadata/drawable = false
+
+[node name="DrawingCanvas" type="Node2D" parent="." unique_id=1782057096]
+script = ExtResource("1_tyffc")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=979125115]
