@@ -16,6 +16,10 @@
 [ext_resource type="AudioStream" uid="uid://dam6d7f1ewba1" path="res://assets/Sounds/dragon-studio-light-switch-on-382714.mp3" id="14_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://c0jqu36q4aydw" path="res://assets/Sounds/freesound_community-electricity-106510.mp3" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://b251gpm0io0g1" path="res://assets/Sounds/Projet_76.mp3" id="16_jbj1t"]
+[ext_resource type="AudioStream" uid="uid://wjrendw8nh5n" path="res://assets/Sounds/v1.mp3" id="17_gqmmt"]
+[ext_resource type="AudioStream" uid="uid://bjtfw5nflmqti" path="res://assets/Sounds/v2.mp3" id="18_yc10j"]
+[ext_resource type="AudioStream" uid="uid://cmowkatg5yt58" path="res://assets/Sounds/v3.mp3" id="19_jscy8"]
+[ext_resource type="AudioStream" uid="uid://crypk7n0ij5xk" path="res://assets/Sounds/v4.mp3" id="20_pm3ni"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -108,3 +112,15 @@ volume_db = -15.0
 stream = ExtResource("16_jbj1t")
 volume_db = -60.0
 autoplay = true
+
+[node name="theo1" type="AudioStreamPlayer3D" parent="Audio" unique_id=1850702418]
+stream = ExtResource("17_gqmmt")
+
+[node name="theo2" type="AudioStreamPlayer3D" parent="Audio" unique_id=1984761232]
+stream = ExtResource("18_yc10j")
+
+[node name="theo3" type="AudioStreamPlayer3D" parent="Audio" unique_id=1772705258]
+stream = ExtResource("19_jscy8")
+
+[node name="theo4" type="AudioStreamPlayer3D" parent="Audio" unique_id=1879538485]
+stream = ExtResource("20_pm3ni")

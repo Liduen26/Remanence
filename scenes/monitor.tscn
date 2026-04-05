@@ -2,9 +2,9 @@
 
 [ext_resource type="ArrayMesh" uid="uid://cnxuqkkt4mvti" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/monitor.obj" id="1_gnqr3"]
 [ext_resource type="FontFile" uid="uid://ch4r8e0ku7ci4" path="res://assets/Fonts/PlaywriteIE-VariableFont_wght.ttf" id="2_3jcr0"]
-[ext_resource type="Script" uid="uid://d3ma3mxxjno8o" path="res://title_effect.gd" id="3_712wi"]
+[ext_resource type="Script" path="res://title_effect.gd" id="3_712wi"]
 [ext_resource type="FontFile" uid="uid://06haja5g2ogp" path="res://assets/Fonts/Montserrat-VariableFont_wght.ttf" id="4_r76x4"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="5_spe5c"]
+[ext_resource type="Texture2D" uid="uid://4kdgsae1o0c8" path="res://assets/Images/champidead.png" id="5_spe5c"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gnqr3"]
 
@@ -19,8 +19,9 @@ emission = Color(0, 0.2, 1, 1)
 emission_energy_multiplier = 0.05
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bvax4"]
+size = Vector2(1.2, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdfrg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r76x4"]
 albedo_texture = ExtResource("5_spe5c")
 
 [node name="Monitor" type="Node3D" unique_id=161854045]
@@ -81,4 +82,4 @@ text = "Meilleur score : 0%"
 transform = Transform3D(0.66, 0, 0, 0, 0.08803965, -0.37521175, 0, 0.49929756, 0.06615998, 0, 0.656, 0.131)
 visible = false
 mesh = SubResource("PlaneMesh_bvax4")
-surface_material_override/0 = SubResource("StandardMaterial3D_cdfrg")
+surface_material_override/0 = SubResource("StandardMaterial3D_r76x4")
