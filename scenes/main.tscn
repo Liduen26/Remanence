@@ -25,6 +25,8 @@
 [ext_resource type="ArrayMesh" uid="uid://c1m7nb1stm81k" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/shelf_B_large_decorated.obj" id="24_og1vs"]
 [ext_resource type="ArrayMesh" uid="uid://b7rku4opas0od" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/pictureframe_small_A.obj" id="24_y6deb"]
 [ext_resource type="Texture2D" uid="uid://b386kmo7wtcnm" path="res://assets/Images/denzel.jpg" id="25_og1vs"]
+[ext_resource type="ArrayMesh" uid="uid://2ids04th5ypi" path="res://assets/low polly pencil/low polly pencil.obj" id="26_2wyq8"]
+[ext_resource type="Script" uid="uid://dao3csshnbg83" path="res://pencil.gd" id="27_vxglm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -157,10 +159,15 @@ script = ExtResource("18_dp3eg")
 
 [node name="LevelTimer" type="Timer" parent="GameManager" unique_id=1960195175]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1532662283]
+[node name="Wall" type="CSGBox3D" parent="." unique_id=1532662283]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 2.3691492, -1.664608)
 size = Vector3(1, 0.5097656, 1)
 material = SubResource("StandardMaterial3D_y6deb")
+
+[node name="LowPollyPencil" type="MeshInstance3D" parent="." unique_id=1181057018]
+transform = Transform3D(-2, 2.1308312e-08, 1.7354226e-07, 0, 1.985092, -0.24373867, -1.7484555e-07, -0.24373867, -1.985092, 0.42036802, 0.9945767, 0.26583245)
+mesh = ExtResource("26_2wyq8")
+script = ExtResource("27_vxglm")
 
 [connection signal="score_updated" from="DrawingController" to="GameManager" method="_on_drawing_controller_score_updated"]
 [connection signal="high_score_updated" from="GameManager" to="Objects/Monitor" method="_on_game_manager_high_score_updated"]
