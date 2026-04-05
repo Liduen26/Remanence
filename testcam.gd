@@ -31,6 +31,5 @@ func _do_traveling():
 	tween.tween_property(self, "rotation_degrees:x", -55.0, 1.5)
 	
 	await get_tree().create_timer(1.0).timeout
-	#await tween.finished
 	lamp_switch.play()
 	get_node("../Objects/lamp_desk2/SpotLight3D").visible = true
