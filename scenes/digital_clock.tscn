@@ -153,4 +153,4 @@ offset_top = -100.0
 offset_right = 1600.0
 offset_bottom = 500.0
 theme_override_font_sizes/normal_font_size = 500
-text = "01:30"
+text = "00:00"
