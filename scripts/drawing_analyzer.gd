@@ -2,6 +2,7 @@ class_name DrawingAnalyzer extends Node
 
 @onready var sub_viewport: SubViewport = $"../SubViewport"
 @onready var debug_display: CanvasLayer = $"../DebugDisplay"
+@onready var drawing_controller: RayCastController = $".."
 
 @export var resolution_analyse := 32
 @export var texture_modele: Texture2D
@@ -36,7 +37,7 @@ func _analyze():
 	await RenderingServer.frame_post_draw
 	
 	var target_drawing = Drawing.new()
-	target_drawing.set_target("champidead")
+	target_drawing.set_target(drawing_controller.image_modele)
 	target_drawing.dilate()
 	target_drawing.set_cropped_image()
 	target_drawing.resize_img()

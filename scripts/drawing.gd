@@ -34,14 +34,7 @@ func set_drawing(texture: ViewportTexture):
 	self.img = image
 
 
-func set_target(name: String):
-	var image = Image.new()
-	image.load("res://assets/" + name + ".png")
-	
-	if image == null:
-		printerr("Erreur : Impossible de charger l'image du chemin : res://assets/" + name + ".png")
-		return
-	
+func set_target(image: Image):
 	self.img = image
 
 func _parse_image():
