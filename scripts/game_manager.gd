@@ -76,6 +76,11 @@ func _release_mouse() -> void:
 
 
 func _start_sequence():
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(camera_3d, "position:z", 0.7, 1.5)
+	tween.tween_property(camera_3d, "rotation_degrees:x", -17.5, 1.5)
+	
 	# Choisir une image random
 	var images = ["champidead", "chat", "diamond", "duck"]
 	var chosen = images[randi() % images.size()]
