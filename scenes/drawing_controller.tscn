@@ -50,6 +50,7 @@ texture_modele = ExtResource("4_yydj0")
 metadata/_custom_type_script = "uid://h8x0vx0pj2wn"
 
 [node name="DebugDisplay" type="CanvasLayer" parent="." unique_id=1963539547]
+visible = false
 
 [node name="Cropped" type="TextureRect" parent="DebugDisplay" unique_id=660468693]
 anchors_preset = 1

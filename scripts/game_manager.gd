@@ -13,9 +13,15 @@ class_name GameManager
 
 @export var game_time_sec := 60
 
+var look_dir := Vector2.ZERO
 var time_left := 0
-
+var mouse_captured := false
 var game_active := false
+
+var look_rotation: Vector2
+var look_speed = 5.0
+
+var img 
 
 signal high_score_updated(score: int)
 var high_score: int = 3:
@@ -29,16 +35,41 @@ signal last_score(score: int)
 func _ready() -> void:
 	self.high_score = load_high_score()
 	self.game_active = false
+	self.img = get_node("../Objects/Monitor/Monitor/img")
+	_capture_mouse()
 
 
 func _input(event):
-	if Input.is_action_just_pressed("Start") and not game_active:
-		_start_sequence()
-		self.game_active = true
+	if not game_active:
+		if Input.is_action_just_pressed("Start"):
+			_start_sequence()
+			_release_mouse()
+			self.game_active = true
+		if mouse_captured and event is InputEventMouseMotion:
+			look_dir = event.relative
+
 	if Input.is_action_just_pressed("Analyse") and game_active:
 		_stop_sequence()
 		self.game_active = false
+		
 
+func _physics_process(delta: float) -> void:
+	if mouse_captured:
+		print(look_dir)
+		const SPEED_DEMULTIPLIER = 1000
+		look_rotation.x -= (look_dir.y * look_speed) / SPEED_DEMULTIPLIER
+		look_rotation.x = clamp(look_rotation.x, deg_to_rad(-60), deg_to_rad(-20)) # limit up/down
+		camera_3d.rotation.x = look_rotation.x
+	
+	look_dir = Vector2.ZERO
+
+func _capture_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_captured = true
+
+func _release_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	mouse_captured = false
 
 
 func _start_sequence():
@@ -49,7 +80,6 @@ func _start_sequence():
 	image.load("res://assets/Images/" + chosen + ".png")
 	print(image)
 	
-	var img = get_node("../Objects/Monitor/Monitor/img")
 	img.get_surface_override_material(0).albedo_texture = ImageTexture.create_from_image(image)
 	drawing_controller.image_modele = image
 	
@@ -57,7 +87,6 @@ func _start_sequence():
 	var viewport = get_node("../Objects/Monitor/Monitor/MeshInstance3D/SubViewport")
 	viewport.get_node("TitleLabel").visible = false
 	viewport.get_node("StartLabel").visible = false
-	viewport.get_node("ScoreLabel").visible = false
 	img.visible = true
 	
 	# Attend
@@ -91,10 +120,9 @@ func _stop_sequence():
 	# Affiche img
 	get_node("../Objects/Monitor/Monitor/MeshInstance3D").visible = true
 	var viewport = get_node("../Objects/Monitor/Monitor/MeshInstance3D/SubViewport")
-	viewport.get_node("TitleLabel").visible = true
-	viewport.get_node("StartLabel").visible = true
-	viewport.get_node("ScoreLabel").visible = true
-	
+	img.visible = true
+	_capture_mouse()
+
 
 func _on_level_timer_timeout() -> void:
 	if time_left > 0:
