@@ -8,8 +8,6 @@ var base_rotation: Vector3
 func _ready():
 	camera = get_viewport().get_camera_3d()
 	drawing_area = get_node("/root/Node3D/DrawingController/Paper/MeshInstance3D")
-	
-	# Sauvegarde la position et rotation de base
 	base_position = global_position
 	base_rotation = rotation_degrees
 
@@ -23,23 +21,30 @@ func _process(_delta):
 	var intersection = plane.intersects_ray(origin, direction)
 	
 	if intersection:
+		var local_point = drawing_area.to_local(intersection)
 		var aabb = drawing_area.get_aabb()
-		var area_pos = drawing_area.global_position
-		var half = aabb.size / 2.0
 		
-		if (intersection.x > area_pos.x - half.x and
-			intersection.x < area_pos.x + half.x and
-			intersection.z > area_pos.z - half.z and
-			intersection.z < area_pos.z + half.z):
+		if aabb.has_point(local_point):
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
-			# Dans la zone → suit la souris
-			global_position = Vector3(intersection.x, intersection.y + 0.5, intersection.z)
-			rotation_degrees = Vector3(7.0, 180.0, 0.0)
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+				global_position = Vector3(intersection.x, intersection.y + 0.222, intersection.z + 0.07)
+				rotation_degrees.x = lerp(rotation_degrees.x, 90.0, 0.1)
+			else:
+				global_position = Vector3(intersection.x, intersection.y + 0.222, intersection.z)
+				rotation_degrees.x = lerp(rotation_degrees.x, -90.0, 0.1)
+			
+			rotation_degrees.y = 180.0
+			rotation_degrees.z = 0.0
 		else:
-			# Hors zone → retour à la position de base
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			global_position = base_position
-			rotation_degrees = base_rotation
+			rotation_degrees.x = lerp(rotation_degrees.x, base_rotation.x, 0.1)
+			rotation_degrees.y = base_rotation.y
+			rotation_degrees.z = base_rotation.z
 	else:
-		# Pas d'intersection → retour à la position de base
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		global_position = base_position
-		rotation_degrees = base_rotation
+		rotation_degrees.x = lerp(rotation_degrees.x, base_rotation.x, 0.1)
+		rotation_degrees.y = base_rotation.y
+		rotation_degrees.z = base_rotation.z
