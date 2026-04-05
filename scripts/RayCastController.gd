@@ -7,6 +7,8 @@ class_name RayCastController extends Node3D
 @onready var viewport: SubViewport = $SubViewport
 @onready var drawing_canvas: Node2D = %DrawingCanvas
 
+var image_modele: Image
+
 const RAY_LENGTH := 10
 
 signal score_updated(score: int)

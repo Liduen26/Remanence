@@ -33,10 +33,13 @@ func _start_sequence():
 	# Choisir une image random
 	var images = ["champidead", "chat", "diamond", "duck"]
 	var chosen = images[randi() % images.size()]
-	var texture = load("res://assets/Images/" + chosen + ".png")
+	var image = Image.new()
+	image.load("res://assets/Images/" + chosen + ".png")
+	print(image)
 	
 	var img = get_node("../Objects/Monitor/Monitor/img")
-	img.get_surface_override_material(0).albedo_texture = texture
+	img.get_surface_override_material(0).albedo_texture = ImageTexture.create_from_image(image)
+	drawing_controller.image_modele = image
 	
 	# Affiche img
 	var viewport = get_node("../Objects/Monitor/Monitor/MeshInstance3D/SubViewport")
