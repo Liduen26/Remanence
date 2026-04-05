@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ui44dfyepe6x"]
 
-[ext_resource type="Script" path="res://scenes/monitor.gd" id="1_bvax4"]
+[ext_resource type="Script" uid="uid://cu71xrfnq06yg" path="res://scenes/monitor.gd" id="1_bvax4"]
 [ext_resource type="ArrayMesh" uid="uid://cnxuqkkt4mvti" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/monitor.obj" id="1_gnqr3"]
 [ext_resource type="FontFile" uid="uid://ch4r8e0ku7ci4" path="res://assets/Fonts/PlaywriteIE-VariableFont_wght.ttf" id="2_3jcr0"]
-[ext_resource type="Script" path="res://title_effect.gd" id="3_712wi"]
+[ext_resource type="Script" uid="uid://d3ma3mxxjno8o" path="res://title_effect.gd" id="3_712wi"]
 [ext_resource type="FontFile" uid="uid://06haja5g2ogp" path="res://assets/Fonts/Montserrat-VariableFont_wght.ttf" id="4_r76x4"]
 [ext_resource type="Texture2D" uid="uid://4kdgsae1o0c8" path="res://assets/Images/champidead.png" id="5_spe5c"]
 
@@ -57,49 +57,54 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 250.0
-offset_top = 150.0
+offset_top = -110.0
 offset_right = 1750.0
-offset_bottom = 650.0
+offset_bottom = 390.0
 grow_vertical = 2
 theme_override_fonts/bold_font = ExtResource("4_r76x4")
 theme_override_font_sizes/normal_font_size = 100
 text = "Appuyez sur la touche Entrée pour commencer..."
 
-[node name="HighScoreLabel" type="RichTextLabel" parent="Monitor/MeshInstance3D/SubViewport" unique_id=287530850]
+[node name="Scores" type="Control" parent="Monitor/MeshInstance3D/SubViewport" unique_id=1840120353]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 780.0
+offset_right = 50.0
+offset_bottom = 780.0
+
+[node name="HighScoreLabel" type="RichTextLabel" parent="Monitor/MeshInstance3D/SubViewport/Scores" unique_id=287530850]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -460.0
-offset_top = -140.0
-offset_right = 1040.0
-offset_bottom = 60.0
+offset_right = 1500.0
+offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 100
 text = "Meilleur score : 0%"
 
-[node name="ScoreLabel" type="RichTextLabel" parent="Monitor/MeshInstance3D/SubViewport" unique_id=1384384698]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -370.0
-offset_right = 630.0
-offset_bottom = 200.0
+[node name="ScoreLabel" type="RichTextLabel" parent="Monitor/MeshInstance3D/SubViewport/Scores" unique_id=1384384698]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 150.0
+offset_right = 1050.0
+offset_bottom = 650.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 71
 text = "Dernier score : 0%"
+
 [node name="SpotLight3D" type="SpotLight3D" parent="Monitor/MeshInstance3D" unique_id=1619102957]
 transform = Transform3D(-1.4613067, -0.38501263, 0.10969021, -0.40648997, 1.079844, -1.6250583, 0.4862884, -2.2138255, -1.2921305, 0.051590167, -1.4067428, -1.385773)
 light_color = Color(1, 0.95686275, 0.8980392, 1)
 light_energy = 1.5
 
 [node name="img" type="MeshInstance3D" parent="Monitor" unique_id=815331994]
-transform = Transform3D(0.66, 0, 0, 0, 0.08803965, -0.37521175, 0, 0.49929756, 0.06615998, 0, 0.656, 0.131)
+transform = Transform3D(0.45, 0, 0, 0, 0.059908636, -0.25605, 0, 0.33975866, 0.045148537, 0, 0.75150603, 0.1178994)
 visible = false
 mesh = SubResource("PlaneMesh_bvax4")
 surface_material_override/0 = SubResource("StandardMaterial3D_r76x4")
