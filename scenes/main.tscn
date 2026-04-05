@@ -12,13 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://djdhrguwxgpwp" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/cup_pencils.gltf" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://ui44dfyepe6x" path="res://scenes/monitor.tscn" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b10fsjrsiqog4" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/cactus_small_B.gltf" id="11_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://bsy7p0bjo0she" path="res://scenes/digital_clock.tscn" id="13_gqmmt"]
+[ext_resource type="PackedScene" path="res://scenes/digital_clock.tscn" id="13_gqmmt"]
 [ext_resource type="AudioStream" uid="uid://dam6d7f1ewba1" path="res://assets/Sounds/dragon-studio-light-switch-on-382714.mp3" id="14_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://c0jqu36q4aydw" path="res://assets/Sounds/freesound_community-electricity-106510.mp3" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://b251gpm0io0g1" path="res://assets/Sounds/Projet_76.mp3" id="16_jbj1t"]
+[ext_resource type="AudioStream" uid="uid://wjrendw8nh5n" path="res://assets/Sounds/v1.mp3" id="17_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://b8equib52i04d" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
 [ext_resource type="Script" uid="uid://dn4t3h8na7ldu" path="res://scripts/game_manager.gd" id="18_dp3eg"]
-[ext_resource type="AudioStream" uid="uid://wjrendw8nh5n" path="res://assets/Sounds/v1.mp3" id="17_gqmmt"]
 [ext_resource type="AudioStream" uid="uid://bjtfw5nflmqti" path="res://assets/Sounds/v2.mp3" id="18_yc10j"]
 [ext_resource type="AudioStream" uid="uid://cmowkatg5yt58" path="res://assets/Sounds/v3.mp3" id="19_jscy8"]
 [ext_resource type="AudioStream" uid="uid://crypk7n0ij5xk" path="res://assets/Sounds/v4.mp3" id="20_pm3ni"]
@@ -115,19 +115,6 @@ stream = ExtResource("16_jbj1t")
 volume_db = -60.0
 autoplay = true
 
-[node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("camera") instance=ExtResource("17_muem4")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636, 0.29763323)
-camera = NodePath("../Camera3D")
-
-[node name="GameManager" type="Node" parent="." unique_id=216708612]
-script = ExtResource("18_dp3eg")
-
-[node name="LevelTimer" type="Timer" parent="GameManager" unique_id=1960195175]
-wait_time = 60.0
-
-[connection signal="score_updated" from="DrawingController" to="GameManager" method="_on_drawing_controller_score_updated"]
-[connection signal="high_score_updated" from="GameManager" to="Objects/Monitor" method="_on_game_manager_high_score_updated"]
-[connection signal="timeout" from="GameManager/LevelTimer" to="GameManager" method="_on_level_timer_timeout"]
 [node name="theo1" type="AudioStreamPlayer3D" parent="Audio" unique_id=1850702418]
 stream = ExtResource("17_gqmmt")
 
@@ -139,3 +126,16 @@ stream = ExtResource("19_jscy8")
 
 [node name="theo4" type="AudioStreamPlayer3D" parent="Audio" unique_id=1879538485]
 stream = ExtResource("20_pm3ni")
+
+[node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("camera") instance=ExtResource("17_muem4")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636, 0.29763323)
+camera = NodePath("../Camera3D")
+
+[node name="GameManager" type="Node" parent="." unique_id=216708612]
+script = ExtResource("18_dp3eg")
+
+[node name="LevelTimer" type="Timer" parent="GameManager" unique_id=1960195175]
+
+[connection signal="score_updated" from="DrawingController" to="GameManager" method="_on_drawing_controller_score_updated"]
+[connection signal="high_score_updated" from="GameManager" to="Objects/Monitor" method="_on_game_manager_high_score_updated"]
+[connection signal="timeout" from="GameManager/LevelTimer" to="GameManager" method="_on_level_timer_timeout"]

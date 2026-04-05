@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cu71xrfnq06yg" path="res://scenes/monitor.gd" id="1_bvax4"]
 [ext_resource type="ArrayMesh" uid="uid://cnxuqkkt4mvti" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/monitor.obj" id="1_gnqr3"]
 [ext_resource type="FontFile" uid="uid://ch4r8e0ku7ci4" path="res://assets/Fonts/PlaywriteIE-VariableFont_wght.ttf" id="2_3jcr0"]
-[ext_resource type="Script" path="res://title_effect.gd" id="3_712wi"]
+[ext_resource type="Script" uid="uid://d3ma3mxxjno8o" path="res://title_effect.gd" id="3_712wi"]
 [ext_resource type="FontFile" uid="uid://06haja5g2ogp" path="res://assets/Fonts/Montserrat-VariableFont_wght.ttf" id="4_r76x4"]
 [ext_resource type="Texture2D" uid="uid://4kdgsae1o0c8" path="res://assets/Images/champidead.png" id="5_spe5c"]
 
