@@ -132,10 +132,12 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636
 camera = NodePath("../Camera3D")
 
 [node name="GameManager" type="Node" parent="." unique_id=216708612]
+unique_name_in_owner = true
 script = ExtResource("18_dp3eg")
 
 [node name="LevelTimer" type="Timer" parent="GameManager" unique_id=1960195175]
 
 [connection signal="score_updated" from="DrawingController" to="GameManager" method="_on_drawing_controller_score_updated"]
 [connection signal="high_score_updated" from="GameManager" to="Objects/Monitor" method="_on_game_manager_high_score_updated"]
+[connection signal="last_score" from="GameManager" to="Objects/Monitor" method="_on_game_manager_last_score"]
 [connection signal="timeout" from="GameManager/LevelTimer" to="GameManager" method="_on_level_timer_timeout"]

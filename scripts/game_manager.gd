@@ -10,6 +10,8 @@ class_name GameManager
 
 var time_left := 0
 
+var game_active := false
+
 signal high_score_updated(score: int)
 var high_score: int = 3:
 	set(new_score):
@@ -17,15 +19,20 @@ var high_score: int = 3:
 		high_score_updated.emit(new_score)
 		save_high_score(new_score)
 
+signal last_score(score: int)
+
 func _ready() -> void:
 	self.high_score = load_high_score()
+	self.game_active = false
 
 
 func _input(event):
-	if Input.is_action_just_pressed("Start"):
+	if Input.is_action_just_pressed("Start") and not game_active:
 		_start_sequence()
-	if Input.is_action_just_pressed("Analyse"):
+		self.game_active = true
+	if Input.is_action_just_pressed("Analyse") and game_active:
 		_stop_sequence()
+		self.game_active = false
 
 
 
@@ -67,6 +74,7 @@ func _start_sequence():
 	camera_3d._do_traveling()
 
 func _stop_sequence():
+	drawing_controller.analyze_drawing()
 	level_timer.stop()
 	camera_3d._reverse_traveling()
 	# Affiche img
@@ -92,11 +100,10 @@ func _on_level_timer_timeout() -> void:
 
 
 func _on_drawing_controller_score_updated(score: int) -> void:
-	print("score received ", score)
+	last_score.emit(score)
 	
 	if score > high_score:
 		high_score = score
-	pass # Replace with function body.
 
 
 

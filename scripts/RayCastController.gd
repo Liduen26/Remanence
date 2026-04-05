@@ -6,6 +6,7 @@ class_name RayCastController extends Node3D
 @onready var object_to_draw_on: MeshInstance3D = $Paper/MeshInstance3D
 @onready var viewport: SubViewport = $SubViewport
 @onready var drawing_canvas: Node2D = %DrawingCanvas
+@onready var drawing_analyzer: DrawingAnalyzer = %DrawingAnalyzer
 
 var image_modele: Image
 
@@ -19,6 +20,9 @@ func _ready() -> void:
 
 func init():
 	drawing_canvas.initialisation()
+
+func analyze_drawing():
+	drawing_analyzer.analyze()
 
 func _input(event):
 	if event is InputEventMouseButton:

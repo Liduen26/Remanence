@@ -27,12 +27,8 @@ func _prepare_modele():
 
 
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Analyse"):
-		_analyze()	
 
-
-func _analyze():
+func analyze():
 	# attend que le cpu ait finit de dessiner la frame
 	await RenderingServer.frame_post_draw
 	
