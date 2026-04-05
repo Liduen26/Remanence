@@ -5,6 +5,10 @@ class_name GameManager
 @onready var pcdie: AudioStreamPlayer3D = $"../Audio/pcdie"
 @onready var camera_3d: Camera3D = $"../Camera3D"
 @onready var level_timer: Timer = $LevelTimer
+@onready var theo_1 = $"../Audio/theo1"
+@onready var theo_2 = $"../Audio/theo2"
+@onready var theo_3 = $"../Audio/theo3"
+@onready var theo_4 = $"../Audio/theo4"
 
 @export var game_time_sec := 60
 
@@ -68,6 +72,11 @@ func _start_sequence():
 	
 	# init timer
 	self.time_left = game_time_sec
+	
+	# theo
+	var dialogues = [theo_1, theo_2, theo_3, theo_4]
+	var chosen_dialogue = dialogues[randi() % dialogues.size()]
+	chosen_dialogue.play()
 	
 	await get_tree().create_timer(1.0).timeout
 	level_timer.start()

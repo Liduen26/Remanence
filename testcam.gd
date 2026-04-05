@@ -1,10 +1,7 @@
 extends Camera3D
 @onready var lamp_switch = $"../Audio/Lamp_switch"
 @onready var pcdie = $"../Audio/pcdie"
-@onready var theo_1 = $"../Audio/theo1"
-@onready var theo_2 = $"../Audio/theo2"
-@onready var theo_3 = $"../Audio/theo3"
-@onready var theo_4 = $"../Audio/theo4"
+
 
 
 func _do_traveling():
@@ -17,10 +14,7 @@ func _do_traveling():
 	lamp_switch.play()
 	get_node("../Objects/lamp_desk2/SpotLight3D").visible = true
 	
-	# theo
-	var dialogues = [theo_1, theo_2, theo_3, theo_4]
-	var chosen_dialogue = dialogues[randi() % dialogues.size()]
-	chosen_dialogue.play()
+	
 	
 	
 
