@@ -10,6 +10,7 @@ class_name GameManager
 @onready var theo_3 = $"../Audio/theo3"
 @onready var theo_4 = $"../Audio/theo4"
 @onready var alarm = $"../Audio/Alarm"
+@onready var low_polly_pencil: MeshInstance3D = $"../LowPollyPencil"
 
 @export var game_time_sec := 60
 
@@ -66,10 +67,12 @@ func _physics_process(delta: float) -> void:
 func _capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true
+	low_polly_pencil.pencil_active = false
 
 func _release_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
+	low_polly_pencil.pencil_active = true
 
 
 func _start_sequence():

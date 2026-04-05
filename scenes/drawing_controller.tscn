@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5fq4vad6bnrs" path="res://scripts/RayCastController.gd" id="1_w0nf1"]
 [ext_resource type="Script" uid="uid://txjcrkw8uxxp" path="res://scripts/DrawingCanvas.gd" id="2_aryyn"]
 [ext_resource type="Script" uid="uid://h8x0vx0pj2wn" path="res://scripts/drawing_analyzer.gd" id="3_dfxhf"]
-[ext_resource type="Texture2D" uid="uid://yx64nklag0f8" path="res://assets/champidead.png" id="4_yydj0"]
+[ext_resource type="Texture2D" uid="uid://yx64nklag0f8" path="res://assets/Images/champidead.png" id="4_yydj0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w0nf1"]
 

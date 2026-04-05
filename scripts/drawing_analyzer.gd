@@ -34,24 +34,24 @@ func analyze():
 	
 	var target_drawing = Drawing.new()
 	target_drawing.set_target(drawing_controller.image_modele)
-	#target_drawing.dilate()
+	target_drawing.dilate()
 	target_drawing.set_cropped_image()
 	target_drawing.resize_img()
 	target_drawing.compute_distance_map()
 	
 	var player_drawing = Drawing.new()
 	player_drawing.set_drawing(sub_viewport.get_texture())
-	#player_drawing.dilate()
-	player_drawing.set_cropped_image()
-	player_drawing.resize_img()
-	player_drawing.compute_distance_map()
-	
-	base.texture = ImageTexture.create_from_image(target_drawing.cropped_img)
-	cropped.texture = ImageTexture.create_from_image(player_drawing.cropped_img)
+	player_drawing.dilate()
+	if player_drawing.set_cropped_image():
+		player_drawing.resize_img()
+		player_drawing.compute_distance_map()
+		
+		base.texture = ImageTexture.create_from_image(target_drawing.cropped_img)
+		cropped.texture = ImageTexture.create_from_image(player_drawing.cropped_img)
 
-	
-	var compare = DrawingCompare.create(target_drawing, player_drawing).compute_iou()
-	compare.compute_distance_score(target_drawing.dist_map, player_drawing.cropped_img)
-	var score = compare.compute_final_score()
-	new_score.emit(score)
+		
+		var compare = DrawingCompare.create(target_drawing, player_drawing).compute_iou()
+		compare.compute_distance_score(target_drawing.dist_map, player_drawing.cropped_img)
+		var score = compare.compute_final_score()
+		new_score.emit(score)
 	

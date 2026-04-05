@@ -83,10 +83,10 @@ func dilate() -> Drawing:
 	self.img = result
 	return self
 
-func set_cropped_image():
+func set_cropped_image() -> bool:
 	if boundary.minX == -1:
 		printerr("Aucun dessin détecté")
-		return
+		return false
 	
 	print(boundary)
 	
@@ -101,6 +101,7 @@ func set_cropped_image():
 	)
 	
 	self.cropped_img = img.get_region(rect)
+	return true
 
 func resize_img():
 	cropped_img.resize(resolution_analyse, resolution_analyse, Image.INTERPOLATE_BILINEAR)

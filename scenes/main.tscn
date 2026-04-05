@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dtd78osncm646"]
 
 [ext_resource type="Texture2D" uid="uid://cjfgwbfnmrj75" path="res://assets/Images/6bc92945363467c12fbbd34c7e8e3830.jpg" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://bs7ml2v0seye2" path="res://testcam.gd" id="1_trceg"]
+[ext_resource type="Script" uid="uid://bs7ml2v0seye2" path="res://scripts/testcam.gd" id="1_trceg"]
 [ext_resource type="PackedScene" uid="uid://bkgl48asplw1q" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/desk_large.gltf" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://68g8k6v0emjj" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/chair_desk_B.gltf" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d2bq4gt5f360x" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/lamp_desk.gltf" id="4_jyhfs"]
@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://c0jqu36q4aydw" path="res://assets/Sounds/freesound_community-electricity-106510.mp3" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://b251gpm0io0g1" path="res://assets/Sounds/Projet_76.mp3" id="16_jbj1t"]
 [ext_resource type="AudioStream" uid="uid://wjrendw8nh5n" path="res://assets/Sounds/v1.mp3" id="17_gqmmt"]
-[ext_resource type="PackedScene" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://b8equib52i04d" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
 [ext_resource type="Script" uid="uid://dn4t3h8na7ldu" path="res://scripts/game_manager.gd" id="18_dp3eg"]
 [ext_resource type="AudioStream" uid="uid://bjtfw5nflmqti" path="res://assets/Sounds/v2.mp3" id="18_yc10j"]
 [ext_resource type="AudioStream" uid="uid://cmowkatg5yt58" path="res://assets/Sounds/v3.mp3" id="19_jscy8"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b386kmo7wtcnm" path="res://assets/Images/denzel.jpg" id="25_og1vs"]
 [ext_resource type="AudioStream" uid="uid://qck2tgri424j" path="res://assets/Sounds/freesound_community-drawing-87057.mp3" id="25_yq6so"]
 [ext_resource type="ArrayMesh" uid="uid://2ids04th5ypi" path="res://assets/low polly pencil/low polly pencil.obj" id="26_2wyq8"]
-[ext_resource type="Script" uid="uid://dao3csshnbg83" path="res://pencil.gd" id="27_vxglm"]
+[ext_resource type="Script" uid="uid://dao3csshnbg83" path="res://scripts/pencil.gd" id="29_yq6so"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -177,7 +177,7 @@ material = SubResource("StandardMaterial3D_y6deb")
 [node name="LowPollyPencil" type="MeshInstance3D" parent="." unique_id=1181057018]
 transform = Transform3D(-2, 2.130831e-08, 1.7354225e-07, 0, 1.9850919, -0.24373865, -1.7484555e-07, -0.24373865, -1.9850919, 0.42036802, 0.9945767, 0.26583245)
 mesh = ExtResource("26_2wyq8")
-script = ExtResource("27_vxglm")
+script = ExtResource("29_yq6so")
 
 [connection signal="score_updated" from="DrawingController" to="GameManager" method="_on_drawing_controller_score_updated"]
 [connection signal="high_score_updated" from="GameManager" to="Objects/Monitor" method="_on_game_manager_high_score_updated"]
