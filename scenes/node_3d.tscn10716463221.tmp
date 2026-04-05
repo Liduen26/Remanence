@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bi1agcg06wd5m"]
 
-[ext_resource type="PackedScene" uid="uid://b8equib52i04d" path="res://scenes/drawing_controller.tscn" id="1_tyffc"]
+[ext_resource type="Script" uid="uid://b5fq4vad6bnrs" path="res://scripts/RayCastController.gd" id="1_ns6u7"]
+[ext_resource type="Script" uid="uid://txjcrkw8uxxp" path="res://scripts/DrawingCanvas.gd" id="1_tyffc"]
+[ext_resource type="Script" uid="uid://h8x0vx0pj2wn" path="res://scripts/drawing_analyzer.gd" id="3_5t4e2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ns6u7"]
 
@@ -50,6 +52,26 @@ metadata/drawable = false
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_5t4e2")
 
-[node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("object_to_draw_on", "camera") instance=ExtResource("1_tyffc")]
+[node name="DrawingController" type="Node3D" parent="." unique_id=1748568107 node_paths=PackedStringArray("object_to_draw_on", "camera")]
+script = ExtResource("1_ns6u7")
 object_to_draw_on = NodePath("../StaticBody3D2/MeshInstance3D")
 camera = NodePath("../Camera3D")
+metadata/_custom_type_script = "uid://b5fq4vad6bnrs"
+
+[node name="SubViewport" type="SubViewport" parent="DrawingController" unique_id=979125115]
+handle_input_locally = false
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="DrawingCanvas" type="Node2D" parent="DrawingController/SubViewport" unique_id=1782057096]
+unique_name_in_owner = true
+clip_children = 2
+z_index = 3
+z_as_relative = false
+script = ExtResource("1_tyffc")
+
+[node name="DrawingAnalyzer" type="Node" parent="DrawingController" unique_id=101731928]
+script = ExtResource("3_5t4e2")
+metadata/_custom_type_script = "uid://h8x0vx0pj2wn"
+
+[node name="DebugDisplay" type="CanvasLayer" parent="DrawingController" unique_id=1918554942]

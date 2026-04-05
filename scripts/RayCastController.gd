@@ -1,30 +1,28 @@
 class_name RayCastController extends Node3D
 
-@export var object_to_draw_on: StaticBody3D
+@export var object_to_draw_on: MeshInstance3D
 @export var camera: Camera3D
+@export var brush_size := 10
+
 @onready var viewport: SubViewport = $SubViewport
-@onready var drawing_canvas: Node2D = $SubViewport/DrawingCanvas
+@onready var drawing_canvas: Node2D = %DrawingCanvas
 
-var strokes: Array = []
-var current_stroke: Array = []
+const RAY_LENGTH := 10
 
-const RAY_LENGTH := 1000
+func _ready() -> void:
+	drawing_canvas.brush_size = brush_size
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				# Create a new stroke
-				current_stroke = []
-				strokes.append(current_stroke)
-				_try_draw()
+				self._try_draw()
 			else:
-				current_stroke = []
+				drawing_canvas.stop_draw()
 
 	elif event is InputEventMouseMotion:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			current_stroke.append(event.position)
-			_try_draw()
+			self._try_draw()
 
 func _try_draw():
 	var collid: Dictionary = _shoot_ray()
@@ -61,8 +59,6 @@ func _get_face_pos(collider) -> Vector2:
 
 	var uv_x = (local_pos.x / 2.0) + 0.5
 	uv_x = clamp(uv_x, 0.0, 1.0)
-	
-	# prend le z si c'est à plat
 	var uv_y = (local_pos.z / 2.0) + 0.5
 	uv_y = clamp(uv_y, 0.0, 1.0)
 
@@ -70,8 +66,8 @@ func _get_face_pos(collider) -> Vector2:
 
 	var viewport_resolution := Vector2(viewport.size)
 	var pixel_pos: Vector2 = uv * viewport_resolution
-	#pixel_pos.y = viewport_resolution.y - pixel_pos.y
 
+	#pixel_pos.y = viewport_resolution.y - pixel_pos.y
 	#print("Coord : ", pixel_pos)
 	#print("----------------------------")
 	
