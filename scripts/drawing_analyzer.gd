@@ -55,7 +55,7 @@ func _analyze():
 
 	
 	var compare = DrawingCompare.create(target_drawing, player_drawing).compute_iou()
-	compare.compute_distance_score(player_drawing.dist_map, target_drawing.cropped_img)
+	compare.compute_distance_score(target_drawing.dist_map, player_drawing.cropped_img)
 	var score = compare.compute_final_score()
 	new_score.emit(score)
 	
