@@ -7,6 +7,8 @@ var init = true
 
 var brush_size: float
 
+var drawing_color: Color = Color.BLACK
+
 func _ready() -> void:
 	initialisation()
 
@@ -32,8 +34,8 @@ func _draw():
 		init = false
 	
 	elif draw_requested and last_position != Vector2(-1, -1):
-		draw_line(last_position, current_position, Color.BLACK, brush_size, true)
-		draw_circle(current_position, brush_size / 2, Color.BLACK)
+		draw_line(last_position, current_position, drawing_color, brush_size, true)
+		draw_circle(current_position, brush_size / 2, drawing_color)
 		
 		last_position = current_position
 		draw_requested = false

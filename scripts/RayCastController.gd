@@ -35,6 +35,10 @@ func _input(event):
 	elif event is InputEventMouseMotion:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			self._try_draw()
+			drawing_canvas.drawing_color = Color.BLACK
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+			self._try_draw()
+			drawing_canvas.drawing_color = Color.WHITE
 
 func _try_draw():
 	var collid: Dictionary = _shoot_ray()
