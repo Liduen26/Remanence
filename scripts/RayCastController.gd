@@ -15,6 +15,10 @@ signal score_updated(score: int)
 
 func _ready() -> void:
 	drawing_canvas.brush_size = brush_size
+	init()
+
+func init():
+	drawing_canvas.initialisation()
 
 func _input(event):
 	if event is InputEventMouseButton:

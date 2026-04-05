@@ -19,7 +19,7 @@ var high_score: int = 3:
 
 func _ready() -> void:
 	self.high_score = load_high_score()
-	self.time_left = game_time_sec
+
 
 func _input(event):
 	if Input.is_action_just_pressed("Start"):
@@ -56,11 +56,18 @@ func _start_sequence():
 	get_node("../Objects/Monitor/Monitor/MeshInstance3D").visible = false
 	img.visible = false
 	
+	#init dessin
+	drawing_controller.init()
+	
+	# init timer
+	self.time_left = game_time_sec
+	
 	await get_tree().create_timer(1.0).timeout
 	level_timer.start()
 	camera_3d._do_traveling()
 
 func _stop_sequence():
+	level_timer.stop()
 	camera_3d._reverse_traveling()
 	# Affiche img
 	get_node("../Objects/Monitor/Monitor/MeshInstance3D").visible = true
