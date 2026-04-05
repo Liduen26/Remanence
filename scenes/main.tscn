@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://bjtfw5nflmqti" path="res://assets/Sounds/v2.mp3" id="18_yc10j"]
 [ext_resource type="AudioStream" uid="uid://cmowkatg5yt58" path="res://assets/Sounds/v3.mp3" id="19_jscy8"]
 [ext_resource type="AudioStream" uid="uid://crypk7n0ij5xk" path="res://assets/Sounds/v4.mp3" id="20_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://b8equib52i04d" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -124,3 +125,6 @@ stream = ExtResource("19_jscy8")
 
 [node name="theo4" type="AudioStreamPlayer3D" parent="Audio" unique_id=1879538485]
 stream = ExtResource("20_pm3ni")
+[node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("camera") instance=ExtResource("17_muem4")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636, 0.29763323)
+camera = NodePath("../Camera3D")
