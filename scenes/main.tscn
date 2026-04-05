@@ -121,7 +121,6 @@ camera = NodePath("../Camera3D")
 
 [node name="GameManager" type="Node" parent="." unique_id=216708612]
 script = ExtResource("18_dp3eg")
-metadata/_custom_type_script = "uid://dn4t3h8na7ldu"
 
 [node name="LevelTimer" type="Timer" parent="GameManager" unique_id=1960195175]
 wait_time = 60.0
