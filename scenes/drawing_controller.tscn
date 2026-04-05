@@ -62,3 +62,5 @@ grow_horizontal = 0
 [node name="Base" type="TextureRect" parent="DebugDisplay" unique_id=1624912216]
 offset_right = 142.0
 offset_bottom = 121.0
+
+[connection signal="new_score" from="DrawingAnalyzer" to="." method="_on_drawing_analyzer_new_score"]

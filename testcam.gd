@@ -1,27 +1,5 @@
 extends Camera3D
-@onready var lamp_switch = $"../Audio/Lamp_switch"
-@onready var pcdie = $"../Audio/pcdie"
-
-
-func _input(event):
-	if event is InputEventKey and event.keycode == KEY_ENTER and event.pressed:
-		_start_sequence()
-
-func _start_sequence():
-		#affiche img
-	get_node("../Objects/Monitor/Monitor/img").visible = true
-	
-	#attend
-	await get_tree().create_timer(3.0).timeout
-	
-	#etein ecran
-	pcdie.play()
-	get_node("../Objects/Monitor/Monitor/MeshInstance3D").visible = false
-	get_node("../Objects/Monitor/Monitor/img").visible = false
-	
-	await get_tree().create_timer(1.0).timeout
-	_do_traveling()
-	
+@onready var lamp_switch: AudioStreamPlayer3D = $"../Audio/Lamp_switch"
 
 
 func _do_traveling():
