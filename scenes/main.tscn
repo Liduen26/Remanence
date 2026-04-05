@@ -26,6 +26,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c1m7nb1stm81k" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/shelf_B_large_decorated.obj" id="24_og1vs"]
 [ext_resource type="ArrayMesh" uid="uid://b7rku4opas0od" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/pictureframe_small_A.obj" id="24_y6deb"]
 [ext_resource type="Texture2D" uid="uid://b386kmo7wtcnm" path="res://assets/Images/denzel.jpg" id="25_og1vs"]
+[ext_resource type="AudioStream" uid="uid://qck2tgri424j" path="res://assets/Sounds/freesound_community-drawing-87057.mp3" id="25_yq6so"]
 [ext_resource type="ArrayMesh" uid="uid://2ids04th5ypi" path="res://assets/low polly pencil/low polly pencil.obj" id="26_2wyq8"]
 [ext_resource type="Script" uid="uid://dao3csshnbg83" path="res://pencil.gd" id="27_vxglm"]
 
@@ -153,6 +154,10 @@ stream = ExtResource("20_pm3ni")
 [node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" unique_id=248634305]
 stream = ExtResource("24_2f3dj")
 volume_db = -20.0
+
+[node name="Pencil" type="AudioStreamPlayer3D" parent="Audio" unique_id=1062235891]
+stream = ExtResource("25_yq6so")
+volume_db = -40.0
 
 [node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("camera") instance=ExtResource("17_muem4")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636, 0.29763323)
