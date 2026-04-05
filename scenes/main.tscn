@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://bjtfw5nflmqti" path="res://assets/Sounds/v2.mp3" id="18_yc10j"]
 [ext_resource type="AudioStream" uid="uid://cmowkatg5yt58" path="res://assets/Sounds/v3.mp3" id="19_jscy8"]
 [ext_resource type="AudioStream" uid="uid://crypk7n0ij5xk" path="res://assets/Sounds/v4.mp3" id="20_pm3ni"]
+[ext_resource type="AudioStream" uid="uid://b813bnj1byo58" path="res://assets/Sounds/freesound_community-bedside-clock-alarm-95792-[AudioTrimmer.com].mp3" id="24_2f3dj"]
 [ext_resource type="ArrayMesh" uid="uid://c1m7nb1stm81k" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/shelf_B_large_decorated.obj" id="24_og1vs"]
 [ext_resource type="ArrayMesh" uid="uid://b7rku4opas0od" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/pictureframe_small_A.obj" id="24_y6deb"]
 [ext_resource type="Texture2D" uid="uid://b386kmo7wtcnm" path="res://assets/Images/denzel.jpg" id="25_og1vs"]
@@ -148,6 +149,10 @@ stream = ExtResource("19_jscy8")
 
 [node name="theo4" type="AudioStreamPlayer3D" parent="Audio" unique_id=1879538485]
 stream = ExtResource("20_pm3ni")
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" unique_id=248634305]
+stream = ExtResource("24_2f3dj")
+volume_db = -20.0
 
 [node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("camera") instance=ExtResource("17_muem4")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636, 0.29763323)

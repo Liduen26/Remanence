@@ -34,14 +34,14 @@ func analyze():
 	
 	var target_drawing = Drawing.new()
 	target_drawing.set_target(drawing_controller.image_modele)
-	target_drawing.dilate()
+	#target_drawing.dilate()
 	target_drawing.set_cropped_image()
 	target_drawing.resize_img()
 	target_drawing.compute_distance_map()
 	
 	var player_drawing = Drawing.new()
 	player_drawing.set_drawing(sub_viewport.get_texture())
-	player_drawing.dilate()
+	#player_drawing.dilate()
 	player_drawing.set_cropped_image()
 	player_drawing.resize_img()
 	player_drawing.compute_distance_map()

@@ -9,6 +9,7 @@ class_name GameManager
 @onready var theo_2 = $"../Audio/theo2"
 @onready var theo_3 = $"../Audio/theo3"
 @onready var theo_4 = $"../Audio/theo4"
+@onready var alarm = $"../Audio/Alarm"
 
 @export var game_time_sec := 60
 
@@ -60,7 +61,7 @@ func _start_sequence():
 	img.visible = true
 	
 	# Attend
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	
 	# Eteint écran
 	pcdie.play()
@@ -83,6 +84,7 @@ func _start_sequence():
 	camera_3d._do_traveling()
 
 func _stop_sequence():
+	alarm.play()
 	drawing_controller.analyze_drawing()
 	level_timer.stop()
 	camera_3d._reverse_traveling()
@@ -92,7 +94,7 @@ func _stop_sequence():
 	viewport.get_node("TitleLabel").visible = true
 	viewport.get_node("StartLabel").visible = true
 	viewport.get_node("ScoreLabel").visible = true
-
+	
 
 func _on_level_timer_timeout() -> void:
 	if time_left > 0:
@@ -105,6 +107,7 @@ func _on_level_timer_timeout() -> void:
 		time_left -= 1
 		
 	elif time_left <= 0:
+		
 		_stop_sequence()
 
 

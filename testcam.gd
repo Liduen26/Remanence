@@ -20,6 +20,7 @@ func _do_traveling():
 
 
 func _reverse_traveling():
+	await get_tree().create_timer(2.0).timeout
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(self, "position:z", 0.7, 1.5)
