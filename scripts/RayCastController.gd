@@ -1,9 +1,9 @@
 class_name RayCastController extends Node3D
 
-@export var object_to_draw_on: MeshInstance3D
 @export var camera: Camera3D
 @export var brush_size := 10
 
+@onready var object_to_draw_on: MeshInstance3D = $Paper/MeshInstance3D
 @onready var viewport: SubViewport = $SubViewport
 @onready var drawing_canvas: Node2D = %DrawingCanvas
 

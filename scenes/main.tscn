@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dam6d7f1ewba1" path="res://assets/Sounds/dragon-studio-light-switch-on-382714.mp3" id="14_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://c0jqu36q4aydw" path="res://assets/Sounds/freesound_community-electricity-106510.mp3" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://b251gpm0io0g1" path="res://assets/Sounds/Projet_76.mp3" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://b8equib52i04d" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -108,3 +109,7 @@ volume_db = -15.0
 stream = ExtResource("16_jbj1t")
 volume_db = -60.0
 autoplay = true
+
+[node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("camera") instance=ExtResource("17_muem4")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636, 0.29763323)
+camera = NodePath("../Camera3D")
