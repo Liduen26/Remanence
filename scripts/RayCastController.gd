@@ -9,6 +9,8 @@ class_name RayCastController extends Node3D
 
 const RAY_LENGTH := 10
 
+signal score_updated(score: int)
+
 func _ready() -> void:
 	drawing_canvas.brush_size = brush_size
 
@@ -73,3 +75,7 @@ func _get_face_pos(collider) -> Vector2:
 	
 	return pixel_pos
 	
+
+
+func _on_drawing_analyzer_new_score(score: int) -> void:
+	score_updated.emit(score)

@@ -37,6 +37,8 @@ func _start_sequence():
 	await get_tree().create_timer(1.0).timeout
 	_do_traveling()
 
+
+
 func _do_traveling():
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -67,3 +69,11 @@ func _start_timer(label):
 		await get_tree().create_timer(1.0).timeout
 		time_left -= 1
 	print("test")
+	_reverse_traveling()
+	
+func _reverse_traveling():
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "position:z", 0.7, 1.5)
+	tween.tween_property(self, "rotation_degrees:x", -17.5, 1.5)
+	get_node("../Objects/lamp_desk2/SpotLight3D").visible = false

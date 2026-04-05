@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ui44dfyepe6x"]
 
+[ext_resource type="Script" uid="uid://cu71xrfnq06yg" path="res://scenes/monitor.gd" id="1_bvax4"]
 [ext_resource type="ArrayMesh" uid="uid://cnxuqkkt4mvti" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/monitor.obj" id="1_gnqr3"]
 [ext_resource type="FontFile" uid="uid://ch4r8e0ku7ci4" path="res://assets/Fonts/PlaywriteIE-VariableFont_wght.ttf" id="2_3jcr0"]
 [ext_resource type="Script" path="res://title_effect.gd" id="3_712wi"]
@@ -25,6 +26,7 @@ size = Vector2(1.2, 2)
 albedo_texture = ExtResource("5_spe5c")
 
 [node name="Monitor" type="Node3D" unique_id=161854045]
+script = ExtResource("1_bvax4")
 
 [node name="Monitor" type="MeshInstance3D" parent="." unique_id=1537350027]
 mesh = ExtResource("1_gnqr3")

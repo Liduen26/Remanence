@@ -11,6 +11,7 @@ var centre_modele = Vector2.ZERO
 @onready var base: TextureRect = $"../DebugDisplay/Base"
 @onready var cropped: TextureRect = $"../DebugDisplay/Cropped"
 
+signal new_score(score: int)
 
 func _ready() -> void:
 	_prepare_modele()
@@ -54,5 +55,6 @@ func _analyze():
 	
 	var compare = DrawingCompare.create(target_drawing, player_drawing).compute_iou()
 	compare.compute_distance_score(player_drawing.dist_map, target_drawing.cropped_img)
-	compare.compute_final_score()
+	var score = compare.compute_final_score()
+	new_score.emit(score)
 	

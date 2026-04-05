@@ -69,16 +69,16 @@ func compute_distance_score(distance_map: Array, drawing: Image) -> float:
 	
 	return self.score_distance
 
-func compute_final_score() -> float:
+func compute_final_score() -> int:
 	var iou = self.score_iou
 	var dist_score = self.score_distance
 
-	var final_score = (0.5 * iou + 0.5 * dist_score) * CHEATING_MULT
-	final_score = final_score * 100
-	final_score = clamp(final_score, 0, 100)
+	var final_score: float = (0.5 * iou + 0.5 * dist_score) * CHEATING_MULT
+	var final_scorei: int = int(final_score * 100)
+	final_scorei = clamp(final_scorei, 0, 100)
 	
 	print("-------------------------")
-	print("FINAL SCORE : ", final_score, " / 100")
+	print("FINAL SCORE : ", final_scorei, " / 100")
 	print("-------------------------")
 
-	return final_score
+	return final_scorei
