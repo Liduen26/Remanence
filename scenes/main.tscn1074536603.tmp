@@ -97,8 +97,6 @@ transform = Transform3D(0.017802566, 0, 0.024146814, 0, 0.03, 0, -0.024146814, 0
 
 [node name="Lamp_switch" type="AudioStreamPlayer3D" parent="Audio" unique_id=1233330456]
 stream = ExtResource("14_a8y0u")
-volume_db = -5.0
 
-[node name="pcdie" type="AudioStreamPlayer3D" parent="Audio" unique_id=588365221]
+[node name="pcdie" type="AudioStreamPlayer3D" parent="Audio" unique_id=687724072]
 stream = ExtResource("15_jkv2x")
-volume_db = -15.0

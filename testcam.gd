@@ -1,4 +1,7 @@
 extends Camera3D
+@onready var lamp_switch = $"../Audio/Lamp_switch"
+@onready var pcdie = $"../Audio/pcdie"
+
 
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_ENTER and event.pressed:
@@ -12,11 +15,14 @@ func _start_sequence():
 	await get_tree().create_timer(3.0).timeout
 	
 	#etein ecran
+	pcdie.play()
 	get_node("../Objects/Monitor/Monitor/MeshInstance3D").visible = false
 	get_node("../Objects/Monitor/Monitor/img").visible = false
 	
 	await get_tree().create_timer(1.0).timeout
 	_do_traveling()
+	
+
 
 func _do_traveling():
 	var tween = create_tween()
@@ -25,6 +31,6 @@ func _do_traveling():
 	tween.tween_property(self, "rotation_degrees:x", -55.0, 1.5)
 	
 	await get_tree().create_timer(1.0).timeout
-	# allumer la lampe fin du travel
-	await tween.finished
+	#await tween.finished
+	lamp_switch.play()
 	get_node("../Objects/lamp_desk2/SpotLight3D").visible = true

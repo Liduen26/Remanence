@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://b10fsjrsiqog4" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/gltf/cactus_small_B.gltf" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://c3owwuti6h3co" path="res://assets/Digital clock.glb" id="12_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://dam6d7f1ewba1" path="res://assets/Sounds/dragon-studio-light-switch-on-382714.mp3" id="14_a8y0u"]
-[ext_resource type="AudioStream" uid="uid://c0jqu36q4aydw" path="res://assets/Sounds/freesound_community-electricity-106510.mp3" id="15_jkv2x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -97,8 +96,3 @@ transform = Transform3D(0.017802566, 0, 0.024146814, 0, 0.03, 0, -0.024146814, 0
 
 [node name="Lamp_switch" type="AudioStreamPlayer3D" parent="Audio" unique_id=1233330456]
 stream = ExtResource("14_a8y0u")
-volume_db = -5.0
-
-[node name="pcdie" type="AudioStreamPlayer3D" parent="Audio" unique_id=588365221]
-stream = ExtResource("15_jkv2x")
-volume_db = -15.0
