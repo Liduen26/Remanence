@@ -17,11 +17,14 @@
 [ext_resource type="AudioStream" uid="uid://c0jqu36q4aydw" path="res://assets/Sounds/freesound_community-electricity-106510.mp3" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://b251gpm0io0g1" path="res://assets/Sounds/Projet_76.mp3" id="16_jbj1t"]
 [ext_resource type="AudioStream" uid="uid://wjrendw8nh5n" path="res://assets/Sounds/v1.mp3" id="17_gqmmt"]
-[ext_resource type="PackedScene" uid="uid://b8equib52i04d" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
+[ext_resource type="PackedScene" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
 [ext_resource type="Script" uid="uid://dn4t3h8na7ldu" path="res://scripts/game_manager.gd" id="18_dp3eg"]
 [ext_resource type="AudioStream" uid="uid://bjtfw5nflmqti" path="res://assets/Sounds/v2.mp3" id="18_yc10j"]
 [ext_resource type="AudioStream" uid="uid://cmowkatg5yt58" path="res://assets/Sounds/v3.mp3" id="19_jscy8"]
 [ext_resource type="AudioStream" uid="uid://crypk7n0ij5xk" path="res://assets/Sounds/v4.mp3" id="20_pm3ni"]
+[ext_resource type="ArrayMesh" uid="uid://c1m7nb1stm81k" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/shelf_B_large_decorated.obj" id="24_og1vs"]
+[ext_resource type="ArrayMesh" uid="uid://b7rku4opas0od" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/pictureframe_small_A.obj" id="24_y6deb"]
+[ext_resource type="Texture2D" uid="uid://b386kmo7wtcnm" path="res://assets/Images/denzel.jpg" id="25_og1vs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -34,6 +37,7 @@ sky_material = SubResource("ProceduralSkyMaterial_eb6dy")
 background_mode = 2
 sky = SubResource("Sky_trceg")
 tonemap_mode = 2
+sdfgi_enabled = true
 glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
@@ -42,10 +46,14 @@ glow_enabled = true
 albedo_texture = ExtResource("1_o5qli")
 uv1_scale = Vector3(40, 40, 40)
 
-[node name="Node3D" type="Node3D" unique_id=183920352]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wyq8"]
+albedo_texture = ExtResource("25_og1vs")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1001986463]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6deb"]
+albedo_color = Color(0.9098039, 0.8509804, 0.7529412, 1)
+uv1_scale = Vector3(10, 10, 10)
+
+[node name="Node3D" type="Node3D" unique_id=183920352]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=132108296]
 environment = SubResource("Environment_a8y0u")
@@ -100,6 +108,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5472745)
 [node name="Digital clock" parent="Objects" unique_id=1987159873 instance=ExtResource("13_gqmmt")]
 transform = Transform3D(0.017802566, 0, 0.024146814, 0, 0.03, 0, -0.024146814, 0, 0.017802566, -0.88763064, 1, 0.39035106)
 
+[node name="ShelfBLargeDecorated" type="MeshInstance3D" parent="Objects" unique_id=815919981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7384738, 1.3930752, -1.2251916)
+mesh = ExtResource("24_og1vs")
+
+[node name="PictureframeSmallA" type="MeshInstance3D" parent="Objects" unique_id=1745362854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4123017, 1.7026769, -1.131997)
+mesh = ExtResource("24_y6deb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Objects/PictureframeSmallA" unique_id=1902569369]
+transform = Transform3D(0.31757498, 0, 0, 0, 0.41372272, 0, 0, 0, 0.1, 0, 0, 0.1331647)
+material_override = SubResource("StandardMaterial3D_2wyq8")
+
 [node name="Audio" type="Node3D" parent="." unique_id=1730681917]
 
 [node name="Lamp_switch" type="AudioStreamPlayer3D" parent="Audio" unique_id=1233330456]
@@ -136,6 +156,11 @@ unique_name_in_owner = true
 script = ExtResource("18_dp3eg")
 
 [node name="LevelTimer" type="Timer" parent="GameManager" unique_id=1960195175]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1532662283]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 2.3691492, -1.664608)
+size = Vector3(1, 0.5097656, 1)
+material = SubResource("StandardMaterial3D_y6deb")
 
 [connection signal="score_updated" from="DrawingController" to="GameManager" method="_on_drawing_controller_score_updated"]
 [connection signal="high_score_updated" from="GameManager" to="Objects/Monitor" method="_on_game_manager_high_score_updated"]

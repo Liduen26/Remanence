@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ui44dfyepe6x"]
 
-[ext_resource type="Script" uid="uid://cu71xrfnq06yg" path="res://scenes/monitor.gd" id="1_bvax4"]
+[ext_resource type="Script" path="res://scenes/monitor.gd" id="1_bvax4"]
 [ext_resource type="ArrayMesh" uid="uid://cnxuqkkt4mvti" path="res://assets/KayKit_Furniture_Bits_1.0_EXTRA/KayKit_Furniture_Bits_1.0_EXTRA/Assets/obj/monitor.obj" id="1_gnqr3"]
 [ext_resource type="FontFile" uid="uid://ch4r8e0ku7ci4" path="res://assets/Fonts/PlaywriteIE-VariableFont_wght.ttf" id="2_3jcr0"]
-[ext_resource type="Script" uid="uid://d3ma3mxxjno8o" path="res://title_effect.gd" id="3_712wi"]
+[ext_resource type="Script" path="res://title_effect.gd" id="3_712wi"]
 [ext_resource type="FontFile" uid="uid://06haja5g2ogp" path="res://assets/Fonts/Montserrat-VariableFont_wght.ttf" id="4_r76x4"]
 [ext_resource type="Texture2D" uid="uid://4kdgsae1o0c8" path="res://assets/Images/champidead.png" id="5_spe5c"]
 
@@ -93,6 +93,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 71
 text = "Dernier score : 0%"
+[node name="SpotLight3D" type="SpotLight3D" parent="Monitor/MeshInstance3D" unique_id=1619102957]
+transform = Transform3D(-1.4613067, -0.38501263, 0.10969021, -0.40648997, 1.079844, -1.6250583, 0.4862884, -2.2138255, -1.2921305, 0.051590167, -1.4067428, -1.385773)
+light_color = Color(1, 0.95686275, 0.8980392, 1)
+light_energy = 1.5
 
 [node name="img" type="MeshInstance3D" parent="Monitor" unique_id=815331994]
 transform = Transform3D(0.66, 0, 0, 0, 0.08803965, -0.37521175, 0, 0.49929756, 0.06615998, 0, 0.656, 0.131)
