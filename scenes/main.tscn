@@ -17,11 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://c0jqu36q4aydw" path="res://assets/Sounds/freesound_community-electricity-106510.mp3" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://b251gpm0io0g1" path="res://assets/Sounds/Projet_76.mp3" id="16_jbj1t"]
 [ext_resource type="AudioStream" uid="uid://wjrendw8nh5n" path="res://assets/Sounds/v1.mp3" id="17_gqmmt"]
+[ext_resource type="PackedScene" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="18_dp3eg"]
 [ext_resource type="AudioStream" uid="uid://bjtfw5nflmqti" path="res://assets/Sounds/v2.mp3" id="18_yc10j"]
 [ext_resource type="AudioStream" uid="uid://cmowkatg5yt58" path="res://assets/Sounds/v3.mp3" id="19_jscy8"]
 [ext_resource type="AudioStream" uid="uid://crypk7n0ij5xk" path="res://assets/Sounds/v4.mp3" id="20_pm3ni"]
-[ext_resource type="PackedScene" uid="uid://b8equib52i04d" path="res://scenes/drawing_controller.tscn" id="17_muem4"]
-[ext_resource type="Script" uid="uid://dn4t3h8na7ldu" path="res://scripts/game_manager.gd" id="18_dp3eg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eb6dy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -126,13 +126,13 @@ stream = ExtResource("19_jscy8")
 
 [node name="theo4" type="AudioStreamPlayer3D" parent="Audio" unique_id=1879538485]
 stream = ExtResource("20_pm3ni")
+
 [node name="DrawingController" parent="." unique_id=646496854 node_paths=PackedStringArray("camera") instance=ExtResource("17_muem4")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.019893825, 1.0212636, 0.29763323)
 camera = NodePath("../Camera3D")
 
 [node name="GameManager" type="Node" parent="." unique_id=216708612]
 script = ExtResource("18_dp3eg")
-metadata/_custom_type_script = "uid://dn4t3h8na7ldu"
 
 [node name="LevelTimer" type="Timer" parent="GameManager" unique_id=1960195175]
 wait_time = 60.0
